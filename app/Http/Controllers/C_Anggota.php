@@ -32,8 +32,8 @@ class C_Anggota extends Controller
             'prodi' => 'required',
             'TA' => 'required',
             'games' => 'required',
-            'no_hp' => ['required', 'regex:/^(?:\+62|0[8-9])[0-9]{8,15}$/', $this->uniqueRule('no_hp'), 'max:14'],
-            'email' => ['required', 'email', $this->uniqueRule('email'), 'max:255'],
+            'no_hp' => ['regex:/^(?:\+62|0[8-9])[0-9]{8,15}$/', $this->uniqueRule('no_hp'), 'max:14'],
+            'email' => ['email', $this->uniqueRule('email'), 'max:255'],
         ];
 
         $this->ResponValid = [
@@ -74,8 +74,8 @@ class C_Anggota extends Controller
             'prodi' => 'required',
             'TA' => 'required',
             'games' => 'required',
-            'no_hp' => ['required', 'regex:/^(?:\+62|0[8-9])[0-9]{8,15}$/', 'max:14'],
-            'email' => 'required|email|max:255|',
+            'no_hp' => ['regex:/^(?:\+62|0[8-9])[0-9]{8,15}$/', 'max:14'],
+            'email' => 'email|max:255|',
         ];
     }
 
@@ -218,7 +218,7 @@ class C_Anggota extends Controller
             'message' => 'Data anggota berhasil diupdate',
             'alert-type' => 'success',
         ];
-        return redirect()->route('Kehadiran')->withInput()->with($response);
+        return redirect()->route('Anggota')->withInput()->with($response);
     }
 
     public function delete($id)
